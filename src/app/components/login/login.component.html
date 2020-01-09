@@ -1,11 +1,8 @@
 <div class="login">
-  <div class="login__title">Cats Page</div>
-  <input class="login__input" type="text">
-  <input type="text" class="login__input login__password">
-
-  <div *ngFor="let article of catLists">
-    <h2>{{article.id}}</h2>
-    <p>{{article.url}}</p>
+  <app-template-driven-form></app-template-driven-form>
+  <div *ngFor="let cat of catLists">
+    <h2>{{cat.id}}</h2>
+    <p>{{cat.url}}</p>
   </div>
 
 </div>
