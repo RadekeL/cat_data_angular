@@ -11,9 +11,12 @@ export class LoginComponent implements OnInit {
   constructor(private catDataService: CatDataService) {}
 
   ngOnInit() {
-    this.catDataService.getNews().subscribe(catLists => {
-      console.log(catLists);
-      this.catLists = catLists;
-    });
+    // * fetch data from API
+    // this.catDataService.getNews().subscribe(catLists => {
+    //   console.log(catLists);
+    //   this.catLists = catLists;
+    //   console.log(this.catLists);
+    // });
+    // console.log(this.catDataService.login("this.catLists"));
   }
 }
