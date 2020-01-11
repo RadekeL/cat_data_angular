@@ -1,7 +1,7 @@
 <form action="action_page.php" method="post" (ngSubmit)="onSubmit(conctactForm)" #conctactForm="ngForm">
   <div class="container">
     <label for="login"><b>Username</b></label>
-    <input [(ngModel)]="user.login" type="text" #login="ngModel" placeholder="Enter Username" name="login" required
+    <input [(ngModel)]="user.image_id" type="text" #login="ngModel" placeholder="Enter Username" name="login" required
       minlength="3" />
     <!-- <div *ngIf="!login.valid && login.dirty"> Please write your login! </div> -->
     <div *ngIf="login.errors && login.dirty && login.errors.minlength">
@@ -9,7 +9,7 @@
     </div>
 
     <label for="password"><b>Password</b></label>
-    <input [(ngModel)]="user.password" type="password" #password="ngModel" placeholder="Enter Password" name="password"
+    <input [(ngModel)]="user.value" type="password" #password="ngModel" placeholder="Enter Password" name="password"
       required minlength="5" />
     <!-- <div *ngIf="!password.valid && password.dirty"> Please write your login! </div> -->
     <div *ngIf="password.errors && password.errors.minlength && password.dirty">

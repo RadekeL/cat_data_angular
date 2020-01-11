@@ -18,17 +18,23 @@ export class TemplateDrivenFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit(formData) {
-    this.userData = { image_id: "radek", value: 123 };
-    this.conctactForm.resetForm();
-    this.catDataService.login(this.userData).subscribe(data => {
+  onSubmit(abc) {
+    console.log(abc);
+    // this.userData = { image_id: "radek", value: 123 };
+    // console.ldfdfdfog(this.user);
+    // debugger;
+
+    this.catDataService.login(this.user).subscribe(data => {
+      console.log(data);
       alert("Welcome on the page.");
       this.router.navigateByUrl("/search");
     });
+    this.conctactForm.resetForm();
+
+    // debugger;
   }
 }
 
 class LogIn {
-  constructor(public login?: string, public password?: string) {}
+  constructor(public image_id?: string, public value?: number) {}
 }
-
