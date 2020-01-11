@@ -27,7 +27,7 @@ export class TemplateDrivenFormComponent implements OnInit {
     this.catDataService.login(this.user).subscribe(data => {
       console.log(data);
       alert("Welcome on the page.");
-      this.router.navigateByUrl("/search");
+      this.router.navigateByUrl("/search"), error => (this.error = error);
     });
     this.conctactForm.resetForm();
 

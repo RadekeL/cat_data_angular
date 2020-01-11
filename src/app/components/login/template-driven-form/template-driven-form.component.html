@@ -1,22 +1,20 @@
-<form action="action_page.php" method="post" (ngSubmit)="onSubmit(conctactForm)" #conctactForm="ngForm">
-  <div class="container">
-    <label for="login"><b>Username</b></label>
-    <input [(ngModel)]="user.image_id" type="text" #login="ngModel" placeholder="Enter Username" name="login" required
-      minlength="3" />
-    <!-- <div *ngIf="!login.valid && login.dirty"> Please write your login! </div> -->
-    <div *ngIf="login.errors && login.dirty && login.errors.minlength">
-      Login should be higher than 3
+<form class="loginForm" (ngSubmit)="onSubmit(conctactForm)" #conctactForm="ngForm">
+  <div class="loginForm__container">
+    <input class="loginForm__input loginForm__login" [(ngModel)]="user.image_id" type="email" email #login="ngModel"
+      placeholder="Enter Email" name="login" minlength="5" required />
+    <div class="loginForm__error" *ngIf="!login.valid && login.errors.minlength && login.dirty">
+      The minimum email length is 5
+    </div>
+    <div class="loginForm__error" *ngIf="login.errors && login.errors.email && login.dirty">
+      Write correct address email
     </div>
 
-    <label for="password"><b>Password</b></label>
-    <input [(ngModel)]="user.value" type="password" #password="ngModel" placeholder="Enter Password" name="password"
-      required minlength="5" />
-    <!-- <div *ngIf="!password.valid && password.dirty"> Please write your login! </div> -->
-    <div *ngIf="password.errors && password.errors.minlength && password.dirty">
-      Login should be higher than 5
+    <input class="loginForm__input loginForm__password" [(ngModel)]="user.value" type="password" #password="ngModel"
+      placeholder="Enter Password" name="password" minlength="5" required />
+    <div class="loginForm__error" *ngIf="password.errors && password.errors.minlength && password.dirty">
+      The minimum password length is 5
     </div>
 
-    <button type="submit" [disabled]="conctactForm.invalid">Login</button>
-    <!-- <router-outlet></router-outlet> -->
+    <button class="loginForm__button" type="submit" [disabled]="conctactForm.invalid">Login</button>
   </div>
 </form>
