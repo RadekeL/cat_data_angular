@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
     this.catDataService.getNews().subscribe(catLists => {
       console.log(catLists);
       this.catLists = catLists;
+      console.log(this.catLists);
     });
+
+    // console.log(this.catDataService.login("this.catLists"));
   }
 }
