@@ -1,4 +1,4 @@
 export class UserData {
-  login: string;
-  password: string;
+  image_id: string;
+  value: number;
 }

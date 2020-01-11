@@ -13,7 +13,13 @@ const appRoutes: Routes = [
   },
   {
     path: "login",
-    component: LoginComponent
+    component: LoginComponent,
+    children: [
+      {
+        path: "search",
+        component: CatSearchComponent
+      }
+    ]
   },
   {
     path: "search",

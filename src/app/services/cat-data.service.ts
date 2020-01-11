@@ -28,10 +28,18 @@ export class CatDataService {
   }
 
   public login(userData): Observable<UserData[]> {
+    console.log(userData);
     return this.httpClient.post<UserData[]>(
-      `https://api.thecatapi.com/v1/images/upload`,
+      `https://api.thecatapi.com/v1/votes`,
       userData,
       this.httpOptions
     );
   }
 }
+
+// public getNews(): Observable<CatLists[]> {
+//   return this.httpClient.get<CatLists[]>(
+//     "https://api.thecatapi.com/v1/images/search",
+//     this.httpOptions
+//   );
+// }
