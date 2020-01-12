@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { CatDataService } from "../../../services/cat-data.service";
-import { UserData } from "../../../models/UserData";
+import { UserData } from "../../../models/UserData"; //!
 import { Router } from "@angular/router";
 
 @Component({
@@ -10,26 +10,21 @@ import { Router } from "@angular/router";
   styleUrls: ["./template-driven-form.component.scss"]
 })
 export class TemplateDrivenFormComponent implements OnInit {
-  @ViewChild("conctactForm", { static: true }) conctactForm: NgForm;
-  userData: UserData;
+  @ViewChild("loginForm", { static: true }) loginForm: NgForm;
+  userData: UserData; //!
   error: string;
   user = new LogIn();
   constructor(private catDataService: CatDataService, private router: Router) {}
 
   ngOnInit() {}
 
-  onSubmit(abc) {
-    console.log(abc);
-    // this.userData = { image_id: "radek", value: 123 };
-    // console.ldfdfdfog(this.user);
-    // debugger;
-
+  onSubmit() {
     this.catDataService.login(this.user).subscribe(data => {
       console.log(data);
       alert("Welcome on the page.");
       this.router.navigateByUrl("/search"), error => (this.error = error);
     });
-    this.conctactForm.resetForm();
+    this.loginForm.resetForm();
 
     // debugger;
   }

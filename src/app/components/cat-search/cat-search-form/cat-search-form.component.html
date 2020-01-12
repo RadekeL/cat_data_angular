@@ -1,11 +1,14 @@
-<form action="" class="catFinder">
+<form class="catFinder" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
   <div class="catFinder__mainSearch">
-    <input class="catFinder__searchName" type="search" name="search" id="search">
-    <select name="type" id="type" class="catFinder__typeSearch">
-      <option value="draw">Draw</option>
-      <option value="name">Name</option>
-      <option value="breed">Breed</option>
+    <input class="catFinder__searchName" id="title" formControlName="title">
+    <select name=" type" id="type" class="catFinder__typeSearch" formControlName="type">
+      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
     </select>
+    <div class="loginForm__error" *ngIf="searchForm.get('title').invalid && searchForm.get('title').dirty">
+      Required field
+    </div>
+    <button type="submit" [disabled]="searchForm.invalid">SUBMIT</button>
+    <button type="reset">Reset </button>
   </div>
   <!-- <div class="catFinder__categories">
       <label for="categories">Categories:</label>

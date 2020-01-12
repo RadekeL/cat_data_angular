@@ -8,9 +8,9 @@ import { CatSearchComponent } from "./components/cat-search/cat-search.component
 import { CatDataEditorComponent } from "./components/cat-data-editor/cat-data-editor.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { TemplateDrivenFormComponent } from "./components/login/template-driven-form/template-driven-form.component";
-import { FormsModule } from "@angular/forms";
-import { CatSearchFormComponent } from './components/cat-search/cat-search-form/cat-search-form.component';
-import { CatInfoCardComponent } from './components/cat-info-card/cat-info-card.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CatSearchFormComponent } from "./components/cat-search/cat-search-form/cat-search-form.component";
+import { CatInfoCardComponent } from "./components/cat-info-card/cat-info-card.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +23,13 @@ import { CatInfoCardComponent } from './components/cat-info-card/cat-info-card.c
     CatSearchFormComponent,
     CatInfoCardComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
 
   providers: [],
   bootstrap: [AppComponent]
