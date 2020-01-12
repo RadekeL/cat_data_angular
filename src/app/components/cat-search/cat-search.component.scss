@@ -1,0 +1,17 @@
+.catData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 75vw;
+  height: 80vh;
+  background-color: #6da2b3;
+  border-radius: 5px;
+  margin-top: 20px;
+
+  &__elements {
+    width: 90%;
+    height: 90%;
+    background-color: green;
+  }
+}

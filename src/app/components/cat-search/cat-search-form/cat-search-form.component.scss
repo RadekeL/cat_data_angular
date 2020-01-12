@@ -1,0 +1,36 @@
+.catFinder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //   width: 90%;
+  height: 50%;
+
+
+  &__mainSearch {
+    width: 94%;
+    background-color: white;
+    border-radius: 7%;
+    margin: 0 auto;
+  }
+
+  &__searchName {
+    width: 70%;
+    border: none;
+  }
+
+  &__typeSearch {
+    width: 30%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-left: 1px solid grey;
+  }
+
+  &__elements {
+    width: 90%;
+    height: 90%;
+    background-color: green;
+  }
+}

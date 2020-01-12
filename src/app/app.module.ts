@@ -9,6 +9,8 @@ import { CatDataEditorComponent } from "./components/cat-data-editor/cat-data-ed
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { TemplateDrivenFormComponent } from "./components/login/template-driven-form/template-driven-form.component";
 import { FormsModule } from "@angular/forms";
+import { CatSearchFormComponent } from './components/cat-search/cat-search-form/cat-search-form.component';
+import { CatInfoCardComponent } from './components/cat-info-card/cat-info-card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule } from "@angular/forms";
     CatSearchComponent,
     CatDataEditorComponent,
     PageNotFoundComponent,
-    TemplateDrivenFormComponent
+    TemplateDrivenFormComponent,
+    CatSearchFormComponent,
+    CatInfoCardComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 
