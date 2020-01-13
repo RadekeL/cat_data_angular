@@ -11,27 +11,16 @@ import { CatBreed } from "../../../models/CatBreed";
 })
 export class CatSearchFormComponent implements OnInit {
   searchForm: FormGroup;
-  selectTitle: any = "Breeds:";
+  selectTitle = ["Breeds:"];
   catDataOutput: CatImage[];
   breedList: CatBreed[];
-
   error: string;
   constructor(private catDataService: CatDataService) {}
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      breeds: new FormControl(this.selectTitle)
+      breed: new FormControl(null)
     });
-
-    this.searchForm.valueChanges.subscribe(value =>
-      this.catDataService
-        .getNews(this.searchForm.value.breeds)
-        .subscribe(catLists => {
-          console.log(catLists);
-          this.catDataOutput = catLists;
-          console.log(this.catDataOutput);
-        })
-    );
 
     this.catDataService.getBreedsName().subscribe(breedList => {
       this.breedList = breedList.map(value => ({
@@ -39,5 +28,14 @@ export class CatSearchFormComponent implements OnInit {
         id: value.id
       }));
     });
+  }
+  onChange() {
+    this.catDataService
+      .getNews(this.searchForm.value.breed)
+      .subscribe(catLists => {
+        console.log(catLists);
+        this.catDataOutput = catLists;
+        console.log(this.catDataOutput);
+      });
   }
 }
