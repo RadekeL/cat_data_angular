@@ -1,28 +1,4 @@
 <div class="catData">
-  <app-cat-search-form></app-cat-search-form>
-  <main class="catData__elements"></main>
+  <app-cat-search-form class="catData__form"></app-cat-search-form>
+  <!-- <app-cat-info-card class="catData__elements"></app-cat-info-card> -->
 </div>
-
-<!-- 
-<form class="s" (ngSubmit)="onSubmit(conctactForm)" #conctactForm="ngForm">
-    <input type="text">
-  
-    <div class="sd">
-      <input class="loginForm__input loginForm__login" [(ngModel)]="user.image_id" type="email" email #login="ngModel"
-        placeholder="Enter Email" name="login" minlength="5" required />
-      <div class="loginForm__error" *ngIf="!login.valid && login.errors.minlength && login.dirty">
-        The minimum email length is 5
-      </div>
-      <div class="loginForm__error" *ngIf="login.errors && login.errors.email && login.dirty">
-        Write correct address email
-      </div>
-  
-      <input class="loginForm__input loginForm__password" [(ngModel)]="user.value" type="password" #password="ngModel"
-        placeholder="Enter Password" name="password" minlength="5" required />
-      <div class="loginForm__error" *ngIf="password.errors && password.errors.minlength && password.dirty">
-        The minimum password length is 5
-      </div>
-  
-      <button class="loginForm__button" type="submit" [disabled]="conctactForm.invalid">Login</button>
-    </div>   </form>
-   -->

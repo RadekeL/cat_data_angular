@@ -1,25 +1,13 @@
-<form class="catFinder" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-  <div class="catFinder__mainSearch">
-    <input class="catFinder__searchName" id="title" formControlName="title">
-    <select name=" type" id="type" class="catFinder__typeSearch" formControlName="type">
-      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-    </select>
-    <div class="loginForm__error" *ngIf="searchForm.get('title').invalid && searchForm.get('title').dirty">
-      Required field
-    </div>
-    <button type="submit" [disabled]="searchForm.invalid">SUBMIT</button>
-    <button type="reset">Reset </button>
-  </div>
-  <!-- <div class="catFinder__categories">
-      <label for="categories">Categories:</label>
-      <select name="categories" id="categories">
-        <option value="boxes">boxes</option>
-        <option value="clothes">clothes</option>
-        <option value="hats">hats</option>
-        <option value="space">space</option>
-        <option value="sunglasses">sunglasses</option>
-        <option value="ties">ties</option>
+<div class="container">
 
-      </select>
-    </div> -->
-</form>
+  <form class="catFinder" [formGroup]="searchForm">
+    <label for="breeds">Choose your favourite cat breed:</label>
+    <select name=" breeds" id="breeds" class="catFinder__breeds" formControlName="breeds">
+      <option *ngFor="let breed of breedList" [value]="breed.id">{{breed.name}}</option>
+    </select>
+  </form>
+  <div class="catFinder__result" *ngIf="catDataOutput">
+    <app-cat-info-card class="catFinder__card" *ngFor="let catData of catDataOutput" [catData]="catData">
+    </app-cat-info-card>
+  </div>
+</div>

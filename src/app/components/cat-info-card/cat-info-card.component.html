@@ -1,1 +1,18 @@
-<p>cat-info-card works!</p>
+<div class="catCard">
+  <!-- {{catData}} -->
+  <img src={{catData.url}} alt="" class="catCard__image">
+  <div class="catCard__moreInfo">
+    <div class="catCard__mainInfo">
+      <h3 class="catCard__name">{{catData.breeds[0].name}}</h3>
+      <h3 class="catCard__origin">{{catData.breeds[0].origin}}</h3>
+    </div>
+
+    <h3 class="catCard__description">{{catData.breeds[0].description}}</h3>
+    <h3 class="catCard__temperament">{{catData.breeds[0].temperament}}</h3>
+    <h3 class="catCard__lifeSpan">life span {{catData.breeds[0].life_span}}</h3>
+
+
+
+
+  </div>
+</div>

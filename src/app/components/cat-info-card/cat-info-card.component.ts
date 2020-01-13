@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
+import { CatImage } from "../../models/CatImage";
 
 @Component({
-  selector: 'app-cat-info-card',
-  templateUrl: './cat-info-card.component.html',
-  styleUrls: ['./cat-info-card.component.scss']
+  selector: "app-cat-info-card",
+  templateUrl: "./cat-info-card.component.html",
+  styleUrls: ["./cat-info-card.component.scss"]
 })
 export class CatInfoCardComponent implements OnInit {
-
-  constructor() { }
+  @Input() catData: CatImage[];
+  constructor() {}
 
   ngOnInit() {
+    console.log(this.catData);
   }
-
 }

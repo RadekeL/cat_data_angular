@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
+import { Component, OnInit, ViewChild, Input } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { CatDataService } from "../../../services/cat-data.service";
+import { CatImage } from "../../../models/CatImage";
+import { CatBreed } from "../../../models/CatBreed";
 
 @Component({
   selector: "app-cat-search-form",
@@ -8,29 +11,33 @@ import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
 })
 export class CatSearchFormComponent implements OnInit {
   searchForm: FormGroup;
-  categories: Array<string> = ["Draw", "Name", "Breed"];
-  catData = new FindData();
-  @ViewChild("catDataFinder", { static: true }) catDataFinder: NgForm;
+  selectTitle: any = "Breeds:";
+  catDataOutput: CatImage[];
+  breedList: CatBreed[];
+
   error: string;
-  data = new FindData();
-  constructor() {}
+  constructor(private catDataService: CatDataService) {}
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      title: new FormControl(null, [Validators.required]),
-      type: new FormControl(this.categories[0])
+      breeds: new FormControl(this.selectTitle)
     });
 
-    this.searchForm.valueChanges.subscribe(value => console.log(value));
-  }
-  onSubmit() {
-    console.log(this.searchForm.value);
-    this.catData.title = this.searchForm.value.title;
-    this.catData.type = this.searchForm.value.type;
-    console.log(this.catData);
-  }
-}
+    this.searchForm.valueChanges.subscribe(value =>
+      this.catDataService
+        .getNews(this.searchForm.value.breeds)
+        .subscribe(catLists => {
+          console.log(catLists);
+          this.catDataOutput = catLists;
+          console.log(this.catDataOutput);
+        })
+    );
 
-class FindData {
-  constructor(public title?: string, public type?: string) {}
+    this.catDataService.getBreedsName().subscribe(breedList => {
+      this.breedList = breedList.map(value => ({
+        name: value.name,
+        id: value.id
+      }));
+    });
+  }
 }
