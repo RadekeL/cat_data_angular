@@ -13,6 +13,7 @@ import { catchError, tap } from "rxjs/operators";
 // IMAGES GIFS ETC
 // For Gifs - Request a new Image with https://api.thecatapi.com/images/search?mime_types=gif
 
+// ! OPTYMALIZE  METHODS Get to get post to post ??
 @Injectable({
   providedIn: "root"
 })
@@ -26,10 +27,18 @@ export class CatDataService {
     })
   };
   constructor(private httpClient: HttpClient) {}
-
+  // ! CHANGE method NAME!!!!!
   public getNews(title: string): Observable<CatImage[]> {
     return this.httpClient.get<CatImage[]>(
       `https://api.thecatapi.com/v1/images/search?breed_id=${title}`,
+
+      this.httpOptions
+    );
+  }
+  // !<Array<CatIamge>> ???
+  public getRandomImage(): Observable<CatImage[]> {
+    return this.httpClient.get<CatImage[]>(
+      `https://api.thecatapi.com/v1/images/search`,
 
       this.httpOptions
     );
@@ -50,6 +59,23 @@ export class CatDataService {
       this.httpOptions
     );
   }
+  // !! <UserData> ?????
+  public postFavourite(data): Observable<UserData[]> {
+    console.log(data);
+    // debugger;
+    return this.httpClient.post<UserData[]>(
+      `https://api.thecatapi.com/v1/favourites`,
+      data,
+      this.httpOptions
+    );
+  }
+
+  // public getFavourites(): Observable<CatImage[]> {
+  //   return this.httpClient.get<CatImage[]>(
+  //     `https://api.thecatapi.com/v1/breeds`,
+  //     this.httpOptions
+  //   );
+  // }
 }
 
 // public getNews(): Observable<CatLists[]> {

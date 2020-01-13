@@ -1,0 +1,13 @@
+.catExplore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__image {
+    width: 90%;
+  }
+
+  &__btn {
+    width: 90%;
+  }
+}

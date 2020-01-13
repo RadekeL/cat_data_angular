@@ -7,22 +7,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./favourite-cats.component.scss"]
 })
 export class FavouriteCatsComponent implements OnInit {
-  id;
-  sub;
-  constructor(
-    private _Activatedroute: ActivatedRoute,
-    private _router: Router // private _productService:ProductService){
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.sub = this._Activatedroute.parent.params.subscribe(params => {
-      this.id = params["id"];
-      // let products = this._productService.getProducts();
-      // this.product = products.find(p => p.productID == this.id);
-    });
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+  ngOnInit() {}
 }
