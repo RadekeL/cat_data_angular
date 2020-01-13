@@ -1,3 +1,10 @@
+$fontSize-small: .6rem;
+$fontSize-medium: .7rem;
+$fontSize-big: .9rem;
+
+$fontWeight-foreground: bold;
+$fontWeight-background: 300;
+
 h3 {
   padding: 0;
   margin: 0;
@@ -10,42 +17,86 @@ h3 {
   align-items: center;
   width: 100%;
   height: 350px;
-  // background-color: red;
-  // border-top: 1.5px solid grey;
+  font-family: Arial, Helvetica, sans-serif;
+
+  @media screen and (min-width: 600px) {
+    height: 500px;
+
+  }
 
   &__image {
     width: 210px;
-    // max-height: 95%;
     border-radius: 10%;
+
+    @media screen and (min-width: 600px) {
+      width: 350px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 400px;
+      max-height: 440px;
+    }
   }
+
 
   &__name {
     font-size: 1rem;
+    font-weight: $fontWeight-foreground;
+
+    @media screen and (min-width: 600px) {
+      font-size: 1.2rem;
+
+    }
   }
 
   &__moreInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
+    // background-color: red;
     width: 90%;
-    height: 50%;
+    height: 30%;
+
+    @media screen and (min-width: 1024px) {
+      width: 70%;
+    }
   }
 
   &__origin {
-    font-size: .5rem;
+    color: darkslategrey;
+    font-size: $fontSize-small;
+    font-weight: $fontWeight-background;
+
+    @media screen and (min-width: 600px) {
+      font-size: $fontSize-medium;
+    }
   }
 
   &__description {
-    font-size: .6rem;
+    font-size: $fontSize-medium;
+    font-weight: $fontWeight-background;
+
+    @media screen and (min-width: 600px) {
+      font-size: $fontSize-big;
+    }
+
   }
 
   &__temperament {
-    font-size: .6rem;
+    font-size: $fontSize-small;
+    font-weight: $fontWeight-background;
+
+    @media screen and (min-width: 600px) {
+      font-size: $fontSize-medium;
+    }
   }
 
   &__lifeSpan {
-    font-size: .6rem;
-  }
+    font-size: $fontSize-small;
+    font-weight: $fontWeight-background;
 
+    @media screen and (min-width: 600px) {
+      font-size: $fontSize-medium;
+    }
+  }
 }
