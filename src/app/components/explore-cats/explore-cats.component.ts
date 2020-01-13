@@ -29,15 +29,10 @@ export class ExploreCatsComponent implements OnInit {
     });
   }
 
-  increaseUserId() {
-    return `${++this.subIdCounter}`.padStart(3, 0);
-    // !   ?
-  }
-
   addToFavourite() {
     this.favCardData = {
       image_id: this.randomCard.id,
-      sub_id: `user-${this.increaseUserId()}`
+      sub_id: `user`
     };
 
     this.catDataService

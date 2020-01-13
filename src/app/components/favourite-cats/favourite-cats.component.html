@@ -1,1 +1,6 @@
-<p>favourite-cats works!</p>
+<div class="favouriteList">
+  <div class="favouriteList__card" *ngFor="let favourite of favouriteList">
+    <img src="{{favourite.url}}" alt="" class="favouriteList__img">
+    <button class="favouriteList__btn" (click)="unFavourite(favourite.id)"> Delete </button>
+  </div>
+</div>

@@ -18,8 +18,10 @@ export class CatSearchFormComponent implements OnInit {
   constructor(private catDataService: CatDataService) {}
   ngOnInit() {
     this.searchForm = new FormGroup({
-      breed: new FormControl(null)
+      breeds: new FormControl()
     });
+
+    // ! Handle Error needed
     this.catDataService.getBreedsName().subscribe(breedList => {
       this.breedList = breedList.map(value => ({
         name: value.name,
@@ -29,7 +31,7 @@ export class CatSearchFormComponent implements OnInit {
   }
   onChange() {
     this.catDataService
-      .getNews(this.searchForm.value.breed)
+      .getNews(this.searchForm.value.breeds)
       .subscribe(catLists => {
         console.log(catLists);
         this.catDataOutput = catLists;

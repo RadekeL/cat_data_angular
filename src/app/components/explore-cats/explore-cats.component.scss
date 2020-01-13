@@ -2,12 +2,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 
   &__image {
-    width: 90%;
+    width: 200px;
+    height: 150px;
+
+    @media screen and (min-width: 600px) {
+      width: 350px;
+      height: 300px;
+    }
   }
 
   &__btn {
-    width: 90%;
+    width: 200px;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    transition: .7s;
+
+    &:hover {
+      background-color: gray;
+      color: white;
+    }
+
+
+    @media screen and (min-width: 600px) {
+      width: 350px;
+    }
   }
+
+
 }

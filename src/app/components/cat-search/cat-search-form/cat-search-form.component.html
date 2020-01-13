@@ -1,7 +1,7 @@
 <div class="container">
   <form class="catFinder" [formGroup]="searchForm">
-    <select class="catFinder__breeds" formControlName="breed" (ngModelChange)="onChange()">
-      <!-- <option value="All" [selected]="'All'">All</option> -->
+    <select class="catFinder__breeds" formControlName="breeds" (ngModelChange)="onChange()">
+      <option value="All" [selected]="'All'">All</option>
       <option *ngFor="let breed of breedList" [value]="breed.id">{{breed.name}}</option>
     </select>
   </form>

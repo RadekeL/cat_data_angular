@@ -70,12 +70,19 @@ export class CatDataService {
     );
   }
 
-  // public getFavourites(): Observable<CatImage[]> {
-  //   return this.httpClient.get<CatImage[]>(
-  //     `https://api.thecatapi.com/v1/breeds`,
-  //     this.httpOptions
-  //   );
-  // }
+  public getFavourites(): Observable<CatImage[]> {
+    return this.httpClient.get<CatImage[]>(
+      `https://api.thecatapi.com/v1/favourites`,
+      this.httpOptions
+    );
+  }
+
+  public deleteFavourites(id): Observable<CatImage[]> {
+    return this.httpClient.delete<CatImage[]>(
+      `https://api.thecatapi.com/v1/favourites/${id}`,
+      this.httpOptions
+    );
+  }
 }
 
 // public getNews(): Observable<CatLists[]> {
