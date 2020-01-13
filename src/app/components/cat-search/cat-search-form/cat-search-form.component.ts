@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { CatDataService } from "../../../services/cat-data.service";
 import { CatImage } from "../../../models/CatImage";
 import { CatBreed } from "../../../models/CatBreed";
-
+import { Observable } from "rxjs/Observable";
 @Component({
   selector: "app-cat-search-form",
   templateUrl: "./cat-search-form.component.html",
@@ -16,12 +16,10 @@ export class CatSearchFormComponent implements OnInit {
   breedList: CatBreed[];
   error: string;
   constructor(private catDataService: CatDataService) {}
-
   ngOnInit() {
     this.searchForm = new FormGroup({
       breed: new FormControl(null)
     });
-
     this.catDataService.getBreedsName().subscribe(breedList => {
       this.breedList = breedList.map(value => ({
         name: value.name,
