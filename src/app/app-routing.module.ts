@@ -4,6 +4,8 @@ import { LoginComponent } from "./components/login/login.component";
 import { CatSearchComponent } from "./components/cat-search/cat-search.component";
 import { CatDataEditorComponent } from "./components/cat-data-editor/cat-data-editor.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { ExploreCatsComponent } from "./components/explore-cats/explore-cats.component";
+import { FavouriteCatsComponent } from "./components/favourite-cats/favourite-cats.component";
 
 const appRoutes: Routes = [
   {
@@ -27,7 +29,18 @@ const appRoutes: Routes = [
   },
   {
     path: "edit",
-    component: CatDataEditorComponent
+    component: CatDataEditorComponent,
+    children: [
+      {
+        path: "explore",
+        component: ExploreCatsComponent
+      },
+      {
+        path: "favourite",
+        component: FavouriteCatsComponent
+      },
+      { path: "", redirectTo: "overview", pathMatch: "full" }
+    ]
   },
   {
     path: "**",

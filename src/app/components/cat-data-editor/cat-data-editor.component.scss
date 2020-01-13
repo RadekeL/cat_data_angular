@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.catExplore {
+  width: 90vw;
+  height: 80vh;
+  background-color: #6DA2B3;
+  margin-top: 20px;
+
+  &__nav {}
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+
+  }
+
+  &__element {
+    width: 100%;
+
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+    transition: .8s;
+
+    &:first-child {
+      border-right: 1px solid lightgray;
+    }
+
+    &--active {
+      color: white;
+    }
+  }
+}
