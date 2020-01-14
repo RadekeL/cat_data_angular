@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CatDataService } from "src/app/services/cat-data.service";
 import { FavCatList } from "src/app/models/FavCatList";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-favourite-cats",
@@ -9,7 +10,7 @@ import { FavCatList } from "src/app/models/FavCatList";
 })
 export class FavouriteCatsComponent implements OnInit {
   favouriteList: any;
-  constructor(private catDataService: CatDataService) {}
+  constructor(private router: Router, private catDataService: CatDataService) {}
 
   ngOnInit() {
     this.catDataService.getFavourites().subscribe(favCat => {
@@ -21,11 +22,10 @@ export class FavouriteCatsComponent implements OnInit {
     });
   }
   // ! handler Error NEeded
-  unFavourite(id) {
-    console.log(id);
-    this.catDataService
-      .deleteFavourites(id)
-      .subscribe(value => console.log(value));
-    // ! pipe for async endering page
+  unFavourite(dislikedCat) {
+    this.catDataService.deleteFavourites(dislikedCat.id).subscribe();
+    this.favouriteList = this.favouriteList.filter(
+      cat => cat.id !== dislikedCat.id
+    );
   }
 }

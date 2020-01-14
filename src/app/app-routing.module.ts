@@ -39,7 +39,7 @@ const appRoutes: Routes = [
       { path: "", redirectTo: "explore", pathMatch: "full" }
     ]
   },
-
+  { path: "", redirectTo: "login", pathMatch: "full" },
   {
     path: "**",
     component: PageNotFoundComponent
