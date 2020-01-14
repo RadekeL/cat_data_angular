@@ -1,18 +1,17 @@
 <form class="loginForm" (ngSubmit)="onSubmit()" #loginForm="ngForm">
   <div class="loginForm__container">
-    <!--  -->
     <input class="loginForm__input loginForm__login" [(ngModel)]="login.image_id" type="email" email
       #emailLogin="ngModel" placeholder="Enter Email" name="login" minlength="5" required />
     <div class="loginForm__error" *ngIf="!emailLogin.valid && emailLogin.errors.minlength && emailLogin.dirty">
-      The minimum email length is 5
+      Minimum email length is 5!
     </div>
     <div class="loginForm__error" *ngIf="emailLogin.errors && emailLogin.errors.email && emailLogin.dirty">
-      Write correct address email
+      Write correct address email!
     </div>
     <input class="loginForm__input loginForm__password" [(ngModel)]="login.value" type="password" #password="ngModel"
       placeholder="Enter Password" name="password" minlength="5" required />
     <div class="loginForm__error" *ngIf="password.errors && password.errors.minlength && password.dirty">
-      The minimum password length is 5
+      Minimum password length is 5
     </div>
     <button class="loginForm__button" type="submit" [disabled]="loginForm.invalid">Login</button>
   </div>

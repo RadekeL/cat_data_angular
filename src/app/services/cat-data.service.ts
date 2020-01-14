@@ -2,83 +2,61 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CatImage } from "../models/CatImage";
-import { UserData } from "../models/UserData";
-import { throwError } from "rxjs";
-import { catchError, tap } from "rxjs/operators";
+import { PostMessage } from "../models/PostMessage";
+import { FavoriteCat } from "../models/FavoriteCat";
 
-// RANDOM:  "https://api.thecatapi.com/v1/images/search?limit=8&page=10&order=Asc",
-// FIND BREED: `https://api.thecatapi.com/v1/images/search?breed_ids=${title}`,
-// FIND CATS IN CATEGORY: https://api.thecatapi.com/v1/images/search?category_ids=1
-
-// IMAGES GIFS ETC
-// For Gifs - Request a new Image with https://api.thecatapi.com/images/search?mime_types=gif
-
-// ! OPTYMALIZE  METHODS Get to get post to post ??
 @Injectable({
   providedIn: "root"
 })
 export class CatDataService {
-  // API_KEY = "MY_API-KEY";
+  apiUrl: string = "https://api.thecatapi.com/v1";
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "http://localhost:4200/",
       "x-api-key": "17d94b92-754f-46eb-99a0-65be65b5d18f"
     })
   };
   constructor(private httpClient: HttpClient) {}
-  // ! CHANGE method NAME!!!!!
-  public getNews(title: string): Observable<CatImage[]> {
+  public getCatImage(title: string): Observable<CatImage[]> {
     return this.httpClient.get<CatImage[]>(
-      `https://api.thecatapi.com/v1/images/search?breed_id=${title}`,
+      `${this.apiUrl}/images/search?breed_id=${title}`,
 
       this.httpOptions
     );
   }
-  // !<Array<CatIamge>> ???
   public getRandomImage(): Observable<CatImage[]> {
     return this.httpClient.get<CatImage[]>(
-      `https://api.thecatapi.com/v1/images/search`,
+      `${this.apiUrl}/images/search`,
 
       this.httpOptions
     );
   }
   public getBreedsName(): Observable<CatImage[]> {
     return this.httpClient.get<CatImage[]>(
-      `https://api.thecatapi.com/v1/breeds`,
+      `${this.apiUrl}/breeds`,
       this.httpOptions
     );
   }
 
-  // !! <UserData> ?????
-  public postFavourite(data): Observable<UserData[]> {
-    console.log(data);
-    // debugger;
-    return this.httpClient.post<UserData[]>(
-      `https://api.thecatapi.com/v1/favourites`,
+  public postFavorite(data): Observable<PostMessage[]> {
+    return this.httpClient.post<PostMessage[]>(
+      `${this.apiUrl}/favorites`,
       data,
       this.httpOptions
     );
   }
 
-  public getFavourites(): Observable<CatImage[]> {
-    return this.httpClient.get<CatImage[]>(
-      `https://api.thecatapi.com/v1/favourites`,
+  public getFavorites(): Observable<FavoriteCat[]> {
+    return this.httpClient.get<FavoriteCat[]>(
+      `${this.apiUrl}/favorites`,
       this.httpOptions
     );
   }
 
-  public deleteFavourites(id): Observable<CatImage[]> {
+  public deleteFavorites(id): Observable<CatImage[]> {
     return this.httpClient.delete<CatImage[]>(
-      `https://api.thecatapi.com/v1/favourites/${id}`,
+      `${this.apiUrl}/Favorites/${id}`,
       this.httpOptions
     );
   }
 }
-
-// public getNews(): Observable<CatLists[]> {
-//   return this.httpClient.get<CatLists[]>(
-//     "https://api.thecatapi.com/v1/images/search",
-//     this.httpOptions
-//   );
-// }

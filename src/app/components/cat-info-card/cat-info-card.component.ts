@@ -10,7 +10,5 @@ export class CatInfoCardComponent implements OnInit {
   @Input() catData: CatImage[];
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.catData);
-  }
+  ngOnInit() {}
 }

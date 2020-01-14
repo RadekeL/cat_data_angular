@@ -17,21 +17,16 @@ export class TemplateDrivenFormComponent implements OnInit {
   ngOnInit() {}
   // ! ERROR HANDLER NEEDED!s
 
-  onSubmit() {
+  onSubmit(): void {
     this.authService.login(this.login).subscribe(data => {
-      alert("Welcome on the page.");
-      alert(this.authService.user);
-
       this.authService.changeAuthState();
-      alert(this.authService.user);
-
       this.router.navigateByUrl("/search"), error => (this.error = error);
     });
     this.loginForm.resetForm();
   }
 }
 
-// ! MODEL?
+// ! ?
 class User {
   constructor(public image_id?: string, public value?: number) {}
 }

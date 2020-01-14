@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild, Input } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
 import { CatDataService } from "../../../services/cat-data.service";
 import { CatImage } from "../../../models/CatImage";
 import { CatBreed } from "../../../models/CatBreed";
-import { Observable } from "rxjs/Observable";
 @Component({
   selector: "app-cat-search-form",
   templateUrl: "./cat-search-form.component.html",
@@ -11,31 +10,27 @@ import { Observable } from "rxjs/Observable";
 })
 export class CatSearchFormComponent implements OnInit {
   searchForm: FormGroup;
-  selectTitle = ["Breeds:"];
-  catDataOutput: CatImage[];
-  breedList: CatBreed[];
+  catDescription: CatImage[];
+  breedsList: CatBreed[];
   error: string;
   constructor(private catDataService: CatDataService) {}
-  ngOnInit() {
+  ngOnInit(): void {
     this.searchForm = new FormGroup({
-      breeds: new FormControl()
+      breeds: new FormControl("Breeds:")
     });
-
     // ! Handle Error needed
-    this.catDataService.getBreedsName().subscribe(breedList => {
-      this.breedList = breedList.map(value => ({
+    this.catDataService.getBreedsName().subscribe(breeds => {
+      this.breedsList = breeds.map(value => ({
         name: value.name,
         id: value.id
       }));
     });
   }
-  onChange() {
+  changeBreed(): void {
     this.catDataService
-      .getNews(this.searchForm.value.breeds)
+      .getCatImage(this.searchForm.value.breeds)
       .subscribe(catLists => {
-        console.log(catLists);
-        this.catDataOutput = catLists;
-        console.log(this.catDataOutput);
+        this.catDescription = catLists;
       });
   }
 }

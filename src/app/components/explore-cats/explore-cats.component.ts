@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CatDataService } from "src/app/services/cat-data.service";
-import { RandomCat } from "src/app/models/RandomCat";
-import { FavouriteCat } from "src/app/models/FavouriteCat";
+import { FavoriteCat } from "src/app/models/FavoriteCat";
+import { CatImage } from "src/app/models/CatImage";
 
 @Component({
   selector: "app-explore-cats",
@@ -11,35 +11,33 @@ import { FavouriteCat } from "src/app/models/FavouriteCat";
 
 // ! OBSLUGA BLEDOW  W KAZDYM SUBSCRIBE
 export class ExploreCatsComponent implements OnInit {
-  randomCard: RandomCat; // ! ???? MAYBE CatImage is good?
-  favCardData: FavouriteCat;
-  private subIdCounter: number = 0;
+  randomCard: CatImage;
+  favCardData: FavoriteCat;
 
   constructor(private catDataService: CatDataService) {}
 
-  // ! randomCard should have another assigment way
-  ngOnInit() {
-    this.catDataService.getRandomImage().subscribe(cards => {
-      this.randomCard = cards[0];
-    });
+  // ! Error handler In next inside if statements
+  ngOnInit(): void {
+    this.nextCat();
   }
-  nextCat() {
-    this.catDataService.getRandomImage().subscribe(card => {
-      this.randomCard = card[0];
+  nextCat(): void {
+    this.catDataService.getRandomImage().subscribe(cards => {
+      if (cards.length === 1) {
+        cards.forEach(card => (this.randomCard = card));
+      }
     });
   }
 
-  addToFavourite() {
+  addToFavorite(): void {
     this.favCardData = {
       image_id: this.randomCard.id,
       sub_id: `user`
     };
 
-    this.catDataService
-      .postFavourite(this.favCardData)
-      .subscribe(value => console.log(value));
+    this.catDataService.postFavorite(this.favCardData).subscribe();
+    this.nextCat();
+
     // * SHOW SUCCESS INORMATION
     // *SHOW ERROR INFORMATION
   }
-  debugger;
 }

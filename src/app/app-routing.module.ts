@@ -5,7 +5,7 @@ import { CatSearchComponent } from "./components/cat-search/cat-search.component
 import { CatDataEditorComponent } from "./components/cat-data-editor/cat-data-editor.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { ExploreCatsComponent } from "./components/explore-cats/explore-cats.component";
-import { FavouriteCatsComponent } from "./components/favourite-cats/favourite-cats.component";
+import { FavoriteCatsComponent } from "./components/favorite-cats/favorite-cats.component";
 import { AuthGuardsService } from "./services/auth-guards.service";
 
 const appRoutes: Routes = [
@@ -33,8 +33,8 @@ const appRoutes: Routes = [
         component: ExploreCatsComponent
       },
       {
-        path: "favourite",
-        component: FavouriteCatsComponent
+        path: "favorite",
+        component: FavoriteCatsComponent
       },
       { path: "", redirectTo: "explore", pathMatch: "full" }
     ]

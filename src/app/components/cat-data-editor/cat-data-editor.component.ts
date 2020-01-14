@@ -7,13 +7,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./cat-data-editor.component.scss"]
 })
 export class CatDataEditorComponent implements OnInit {
-  // constructor(private route: ActivatedRoute) {}
   constructor() {}
 
   ngOnInit() {}
-
-  //   this.route.paramMap.subscribe(param => {
-  //     console.log(param);
-  //   });
-  // }
 }
