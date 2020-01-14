@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { CatDataService } from "../../../services/cat-data.service";
-import { UserData } from "../../../models/UserData"; //!
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-template-driven-form",
@@ -11,25 +10,28 @@ import { Router } from "@angular/router";
 })
 export class TemplateDrivenFormComponent implements OnInit {
   @ViewChild("loginForm", { static: true }) loginForm: NgForm;
-  userData: UserData; //!
   error: string;
-  user = new LogIn();
-  constructor(private catDataService: CatDataService, private router: Router) {}
+  login = new User();
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
   // ! ERROR HANDLER NEEDED!s
+
   onSubmit() {
-    this.catDataService.login(this.user).subscribe(data => {
-      console.log(data);
+    this.authService.login(this.login).subscribe(data => {
       alert("Welcome on the page.");
+      alert(this.authService.user);
+
+      this.authService.changeAuthState();
+      alert(this.authService.user);
+
       this.router.navigateByUrl("/search"), error => (this.error = error);
     });
     this.loginForm.resetForm();
-
-    // debugger;
   }
 }
 
-class LogIn {
+// ! MODEL?
+class User {
   constructor(public image_id?: string, public value?: number) {}
 }

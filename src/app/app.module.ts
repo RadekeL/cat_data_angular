@@ -11,8 +11,11 @@ import { TemplateDrivenFormComponent } from "./components/login/template-driven-
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CatSearchFormComponent } from "./components/cat-search/cat-search-form/cat-search-form.component";
 import { CatInfoCardComponent } from "./components/cat-info-card/cat-info-card.component";
-import { ExploreCatsComponent } from './components/explore-cats/explore-cats.component';
-import { FavouriteCatsComponent } from './components/favourite-cats/favourite-cats.component';
+import { ExploreCatsComponent } from "./components/explore-cats/explore-cats.component";
+import { FavouriteCatsComponent } from "./components/favourite-cats/favourite-cats.component";
+import { AuthService } from "./services/auth.service";
+import { CatDataService } from "./services/cat-data.service";
+import { AuthGuardsService } from "./services/auth-guards.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +38,7 @@ import { FavouriteCatsComponent } from './components/favourite-cats/favourite-ca
     ReactiveFormsModule
   ],
 
-  providers: [],
+  providers: [AuthService, CatDataService, AuthGuardsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -6,6 +6,7 @@ import { CatDataEditorComponent } from "./components/cat-data-editor/cat-data-ed
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { ExploreCatsComponent } from "./components/explore-cats/explore-cats.component";
 import { FavouriteCatsComponent } from "./components/favourite-cats/favourite-cats.component";
+import { AuthGuardsService } from "./services/auth-guards.service";
 
 const appRoutes: Routes = [
   {
@@ -15,21 +16,17 @@ const appRoutes: Routes = [
   },
   {
     path: "login",
-    component: LoginComponent,
-    children: [
-      {
-        path: "search",
-        component: CatSearchComponent
-      }
-    ]
+    component: LoginComponent
   },
   {
     path: "search",
-    component: CatSearchComponent
+    component: CatSearchComponent,
+    canActivate: [AuthGuardsService]
   },
   {
     path: "edit",
     component: CatDataEditorComponent,
+    canActivate: [AuthGuardsService],
     children: [
       {
         path: "explore",
@@ -39,9 +36,10 @@ const appRoutes: Routes = [
         path: "favourite",
         component: FavouriteCatsComponent
       },
-      { path: "", redirectTo: "overview", pathMatch: "full" }
+      { path: "", redirectTo: "explore", pathMatch: "full" }
     ]
   },
+
   {
     path: "**",
     component: PageNotFoundComponent
