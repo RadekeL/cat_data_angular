@@ -40,7 +40,7 @@ export class CatDataService {
 
   public postFavorite(data): Observable<PostMessage[]> {
     return this.httpClient.post<PostMessage[]>(
-      `${this.apiUrl}/favorites`,
+      `${this.apiUrl}/favourites`,
       data,
       this.httpOptions
     );
@@ -48,14 +48,14 @@ export class CatDataService {
 
   public getFavorites(): Observable<FavoriteCat[]> {
     return this.httpClient.get<FavoriteCat[]>(
-      `${this.apiUrl}/favorites`,
+      `${this.apiUrl}/favourites`,
       this.httpOptions
     );
   }
 
   public deleteFavorites(id): Observable<CatImage[]> {
     return this.httpClient.delete<CatImage[]>(
-      `${this.apiUrl}/Favorites/${id}`,
+      `${this.apiUrl}/favourites/${id}`,
       this.httpOptions
     );
   }
