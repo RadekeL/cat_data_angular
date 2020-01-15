@@ -1,6 +1,5 @@
 <div class="favoriteList">
-  <div class="favoriteList__card" *ngFor="let cat of favoriteList">
-    <img src="{{cat.url}}" alt="" class="favoriteList__img">
-    <button class="favoriteList__btn" (click)="unfavorite(cat)"> Delete </button>
-  </div>
+  <app-favorite-cat-card (eventUnlikeCat)="unFavorite($event)" class="favoriteList__card"
+    *ngFor="let cat of favoriteList" [favoriteList]="favoriteList" [cat]='cat'>
+  </app-favorite-cat-card>
 </div>

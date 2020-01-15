@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { LoginComponent } from "./login.component";
+import { CatBreedCardComponent } from "./cat-breed-card.component";
 
-describe("TemplateDrivenFormComponent", () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe("CatBreedCardComponent", () => {
+  let component: CatBreedCardComponent;
+  let fixture: ComponentFixture<CatBreedCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent]
+      declarations: [CatBreedCardComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(CatBreedCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,5 +4,5 @@ export class FavoriteCat {
   url?: string;
   image_id?: string;
   created_at?: string;
-  image?: string;
+  image?: { url: string; id: string };
 }

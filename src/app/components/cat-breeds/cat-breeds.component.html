@@ -1,0 +1,16 @@
+<div class="catData">
+
+  <div class="container">
+    <form class="catFinder" [formGroup]="searchForm">
+      <label class="catFinder__label" for="breeds">Choose your favorite cat breed:</label>
+      <select class="catFinder__breeds" id="breeds" formControlName="breeds" (ngModelChange)="changeBreed()">
+        <option *ngFor="let breed of breedsList" [value]="breed.id">{{breed.name}}</option>
+      </select>
+    </form>
+    <div class="catFinder__result" *ngIf="catDescription">
+      <app-cat-breed-card class="catFinder__card" *ngFor="let catData of catDescription" [catData]="catData">
+      </app-cat-breed-card>
+    </div>
+  </div>
+
+</div>

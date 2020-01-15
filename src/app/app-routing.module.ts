@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { LoginComponent } from "./components/login/login.component";
-import { CatSearchComponent } from "./components/cat-search/cat-search.component";
+import { CatBreedsComponent } from "./components/cat-breeds/cat-breeds.component";
 import { CatDataEditorComponent } from "./components/cat-data-editor/cat-data-editor.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { ExploreCatsComponent } from "./components/explore-cats/explore-cats.component";
 import { FavoriteCatsComponent } from "./components/favorite-cats/favorite-cats.component";
 import { AuthGuardsService } from "./services/auth-guards.service";
+import { LoginComponent } from "./components/login/login.component";
 
 const appRoutes: Routes = [
   {
@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   },
   {
     path: "search",
-    component: CatSearchComponent,
+    component: CatBreedsComponent,
     canActivate: [AuthGuardsService]
   },
   {

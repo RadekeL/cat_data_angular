@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CatSearchComponent } from './cat-search.component';
+import { FavoriteCatCardComponent } from './favorite-cat-card.component';
 
-describe('CatSearchComponent', () => {
-  let component: CatSearchComponent;
-  let fixture: ComponentFixture<CatSearchComponent>;
+describe('FavoriteCatCardComponent', () => {
+  let component: FavoriteCatCardComponent;
+  let fixture: ComponentFixture<FavoriteCatCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CatSearchComponent ]
+      declarations: [ FavoriteCatCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CatSearchComponent);
+    fixture = TestBed.createComponent(FavoriteCatCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
